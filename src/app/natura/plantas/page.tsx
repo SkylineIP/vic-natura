@@ -22,6 +22,14 @@ const page = () => {
     }, [submenu, setSubmenuAndSelected])
 
     const selectedCategory = submenuPlantas.find(item => item.title === submenu);
+
+    // Find the button object that matches the selectedPlant state
+    const selectedButton = selectedCategory?.buttons?.find(
+        (button) => button.text === selectedPlant
+    );
+
+    // Determine the image to show: the selected one, or the first one as a default.
+    const imageToDisplay = selectedButton?.image || selectedCategory?.buttons?.[0]?.image;
     return (
         <>
             {submenu === "Implantação" && (
@@ -35,17 +43,26 @@ const page = () => {
             )}
             {selectedCategory && selectedCategory.buttons && (
                 <>
-                selectedCategory.buttons.map((button) => (
-                    <button
-                        key={button.id}
-                        onClick={() => setSelectedPlant(button.text)}
-                        style={{
-                            gridRow: `${button.rowSpan} / span 1`,
-                        }}
-                        className={`text-lg transition-colors text-center col-span-3 row-span-1 col-start-8 ${selectedPlant === button.text ? 'bg-[#3F4444] text-white' : 'bg-[#F8B04C] text-white hover:bg-[#3F4444]'}`}>
-                        {button.text}
-                    </button>
-                    ))
+                    {selectedCategory.buttons.map((button) => (
+                        <button
+                            key={button.id}
+                            onClick={() => setSelectedPlant(button.text)}
+                            style={{
+                                gridRow: `${button.rowSpan} / span 1`,
+                            }}
+                            className={`text-lg transition-colors text-center col-span-3 row-span-1 col-start-8 ${selectedPlant === button.text ? 'bg-[#3F4444] text-white' : 'bg-[#F8B04C] text-white hover:bg-[#3F4444]'}`}>
+                            {button.text}
+                        </button>
+                    ))}
+                    {imageToDisplay && (
+                        <Image
+                            src={imageToDisplay}
+                            alt={selectedButton?.text || "Planta"}
+                            width={2080}
+                            height={2160}
+                            className='col-span-13 row-span-24 animate-fade-left'
+                        />
+                    )}
                 </>
             )}
         </>
