@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className="bg-background text-foreground font-bricolage">
+      <body className="bg-background text-foreground overflow-hidden">
         <React.StrictMode>
           <ContextSound>
             <ContextDefault>

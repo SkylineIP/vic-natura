@@ -25,6 +25,9 @@ export default {
       fontFamily: {
         bricolage: ["bricolage"],
       },
+      backgroundImage: {
+        "menu": 'url("/menu/bg-menu.png")'
+      },
       screens: {
         desktopmini: { min: "901px", max: "1535px" }, // telas de 901px até 1535px
         tablet: { min: "601px", max: "900px" }, // tablets (601px até 900px)

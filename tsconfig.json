@@ -25,8 +25,9 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
-    }
+      ],
+    },
+    "types": ["jest", "node", "@testing-library/jest-dom", "google.maps"]
   },
   "include": [
     "**/*.ts",
