@@ -8,13 +8,22 @@ import Image from "next/image";
 const MenuPage: React.FC = () => {
   const router = useRouter();
   const context = useContextDefault();
+
   const menuButtons = [
-    { label: "LOCALIZAÇÃO", icon: "/menu/location.svg", href: "/natura/localizacao" },
-    { label: "IMAGENS", icon: "/menu/images.svg", href: "/natura/imagens"},
-    { label: "PLANTAS", icon: "/menu/plants.svg", href: "/natura/plantas"},
-    { label: "FICHA TÉCNICA", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica"},
-    { label: "VÍDEOS", icon: "/menu/videos.svg", href: "/natura/videos" },
+    { label: "localizacao", icon: "/menu/location.svg", href: "/natura/localizacao", submenu: "mapa2d" },
+    { label: "imagens", icon: "/menu/images.svg", href: "/natura/imagens" },
+    { label: "plantas", icon: "/menu/plants.svg", href: "/natura/plantas", submenu: "Implantação" },
+    { label: "ficha-tecnica", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica" },
+    { label: "vídeos", icon: "/menu/videos.svg", href: "/natura/videos" },
   ]
+
+  enum labelButtons {
+    "localizacao" = "Localização",
+    "imagens" = "Imagens",
+    "plantas" = "Plantas",
+    "ficha-tecnica" = "Ficha Técnica",
+    "vídeos" = "Vídeos",
+  }
 
   const sideButtons = [
     { label: "lancamento", icon: "/menu/b-lancamento.png" },
@@ -23,6 +32,19 @@ const MenuPage: React.FC = () => {
     { label: "breve", icon: "/menu/b-breve-lancamento.png" },
     { label: "vic", icon: "/menu/b-vic.png" }
   ]
+
+  interface buttonHandlerProps {
+    href: string,
+    label: string,
+    submenu?: string
+  }
+
+  const handleButtonClick = ({ href, label, submenu }: buttonHandlerProps) => {
+    router.push(href)
+    context?.setSubmenuAndSelected?.(label, submenu || "")
+  }
+
+
 
   return (
     <>
@@ -55,7 +77,7 @@ const MenuPage: React.FC = () => {
           </button>
         ))}
       </div>
-      <div className="row-span-24 col-span-23 bg-menu grid grid-cols-23 grid-rows-24 bg-menu bg-cover">
+      <div className="row-span-24 col-span-23 bg-menu grid grid-cols-23 grid-rows-24 bg-cover">
         <Image
           src="/menu/logo.jpg"
           alt="logo"
@@ -73,7 +95,7 @@ const MenuPage: React.FC = () => {
             <button
               key={btn.label}
               onClick={() => {
-                router.push(btn.href)
+                handleButtonClick(btn)
               }}
               className="bg-[#F68B07] text-white flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold text-lg w-full"
               style={{
@@ -88,7 +110,7 @@ const MenuPage: React.FC = () => {
                 height={60}
                 className="mr-2"
               />
-              {btn.label}
+              {labelButtons[btn.label as keyof typeof labelButtons]}
             </button>
           ))}
         </div>

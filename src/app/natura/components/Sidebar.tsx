@@ -123,7 +123,10 @@ const Sidebar = () => {
                     alt="logo"
                     width={800}
                     height={450}
-                    className="object-cover p-2"
+                    className="object-cover p-2 cursor-pointer hover:scale-105 transition-all duration-500"
+                    onClick={() => {
+                        router.push("/natura")
+                    }}
                 />
                 {buttonsData.map((button, index) => (
                     <SideButton
@@ -257,6 +260,13 @@ const Sidebar = () => {
                                 {item.title}
                             </button>
                         ))}
+                    </div>
+                )}
+                {currentRoute === "Ficha Técnica" && (
+                    <div className='col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 animate-fade-right'>
+                        <span className='col-span-3 text-md text-white text-justify'>
+                            Prepare-se para viver em um empreendimento pensado para seu bem-estar, com a qualidade e o cuidado que só a VIC tem.
+                        </span>
                     </div>
                 )}
                 <Image

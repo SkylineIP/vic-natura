@@ -103,8 +103,8 @@ export default function ThemeRegistry({
       {!isFullscreen && <FullscreenPrompt onEnter={handleEnterFullscreen} />}
       {isLandscape && isFullscreen ? children : !isLandscape ? <OrientationWarning /> : null}
       {abrirImagensTelaCheia?.open && <TelaCheia />}
-      <ButtonSoundAudio />
-      <Music />
+      {/* <ButtonSoundAudio /> */}
+      {/* <Music /> */}
     </ThemeProvider>
   );
 }
