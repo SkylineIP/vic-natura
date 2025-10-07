@@ -6,9 +6,9 @@ import ThemeRegistry from "./materialUITheme";
 import { ContextSound } from "@/context/ContextSound";
 
 export const metadata: Metadata = {
-  title: "Skyline",
+  title: "Gran VIC Natura",
   description:
-    "Modelo de Replicação apoiado na Documentação feita para o setor",
+    "Vem aí o Gran VIC Natura, em Nova Odessa!",
 };
 
 export default function RootLayout({

@@ -1,8 +1,13 @@
 {
-  "name": "skyline-template",
+  "name": "gran-vic-natura",
   "version": "1.1.0",
   "private": true,
-  "main": "main/main.js",
+  "main": "main/main.mjs",
+  "author": {
+    "name": "Skyline IP",
+    "url": "https://skylineip.com"
+  },
+  "description": "Tela interativa Gran VIC Natura",
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",

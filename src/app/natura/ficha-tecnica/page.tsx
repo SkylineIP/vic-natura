@@ -1,7 +1,14 @@
+'use client'
+import { useContextDefault } from '@/context/Context'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 
-const page = () => {
+const FichaPage = () => {
+  const context = useContextDefault()
+  const setSubmenuAndSelected = context?.setSubmenuAndSelected
+  useEffect(() => {
+    setSubmenuAndSelected?.("ficha-tecnica", "")
+  }, [])
   return (
     <>
       <Image
@@ -16,4 +23,4 @@ const page = () => {
   )
 }
 
-export default page
+export default FichaPage

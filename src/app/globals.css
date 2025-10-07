@@ -30,7 +30,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: "bricolage";
+  font-family: 'gotham', sans-serif;
 }
 
 img {
@@ -94,8 +94,8 @@ img {
 }
 
 @font-face {
-  font-family: "bricolage";
-  src: url("./fonts/BricolageGrotesque-VariableFont.ttf")
+  font-family: "gotham";
+  src: url("./fonts/Gotham-Book.otf")
     format("truetype-variations");
   font-weight: 100 900; /* intervalos de peso suportados */
   font-style: normal;

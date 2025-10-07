@@ -10,7 +10,7 @@ import {
 import { useContextDefault } from "@/context/Context";
 
 const MapContent = () => {
-  const mapsLibrary = useMapsLibrary('maps');
+  const mapsLibrary = useMapsLibrary("maps");
   const context = useContextDefault();
   const submenu = context?.submenu;
   const [isSatellite, setIsSatellite] = useState(true);
@@ -31,8 +31,9 @@ const MapContent = () => {
   return (
     <div className="relative w-full h-full">
       <Map
+      // -22.796676613849655, -47.293060704044514
         style={{ width: "100%", height: "100vh" }}
-        defaultCenter={{ lat: -22.739496629856745, lng: -41.944472392281355 }}
+        defaultCenter={{ lat: -22.796676613849655, lng: -47.293060704044514 }}
         // coordenadas do centro do mapa
         // você pode substituir por outras coordenadas
         defaultZoom={18}
@@ -48,7 +49,7 @@ const MapContent = () => {
           <Marker
             // marcador no mapa
             icon={markerIcon}
-            position={{ lat: -22.739496629856745, lng: -41.944472392281355 }}
+            position={{ lat: -22.796676613849655, lng: -47.293060704044514 }}
           />
         )}
       </Map>

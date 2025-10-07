@@ -7,7 +7,7 @@ import Image from 'next/image';
 // Apto. Térreo
 // Apto. Tipo
 
-const page = () => {
+const PlantasPage = () => {
     const context = useContextDefault();
     const submenu = context?.submenu;
     const setSubmenuAndSelected = context?.setSubmenuAndSelected;
@@ -73,7 +73,7 @@ const page = () => {
                                 gridRow: `${button.rowSpan} / span 1`,
                                 animationDelay: isAnimating ? `${150 * index}ms` : '0ms'
                             }}
-                            className={`text-lg transition-colors text-center col-span-3 row-span-1 col-start-8      animate-fade-right ${selectedPlant === button.text ? 'bg-[#3F4444] text-white' : 'bg-[#F8B04C] text-white hover:bg-[#3F4444]'}`}>
+                            className={` text-md transition-colors text-center col-span-3 row-span-1 col-start-8      animate-fade-right ${selectedPlant === button.text ? 'bg-[#3F4444] text-white' : 'bg-[#F8B04C] text-white hover:bg-[#3F4444]'}`}>
                             {button.text}
                         </button>
                     ))}
@@ -93,4 +93,4 @@ const page = () => {
     )
 }
 
-export default page
+export default PlantasPage

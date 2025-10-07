@@ -23,7 +23,7 @@ export default {
         "24": "repeat(24, minmax(0, 1fr))",
       },
       fontFamily: {
-        bricolage: ["bricolage"],
+        gotham: ["gotham"],
       },
       backgroundImage: {
         "menu": 'url("/menu/bg-menu.png")'

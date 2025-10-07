@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 
 import { useRouter } from "next/navigation";
 import { useContextDefault } from "@/context/Context";
@@ -43,8 +43,6 @@ const MenuPage: React.FC = () => {
     router.push(href)
     context?.setSubmenuAndSelected?.(label, submenu || "")
   }
-
-
 
   return (
     <>
@@ -97,11 +95,13 @@ const MenuPage: React.FC = () => {
               onClick={() => {
                 handleButtonClick(btn)
               }}
-              className="bg-[#F68B07] text-white flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold text-lg w-full"
+              className={`bg-[#F68B07] text-white uppercase flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold tracking-widest text-lg w-full
+  ${btn.label === "vídeos" ? "opacity-30 grayscale cursor-not-allowed pointer-events-none" : "hover:scale-105"}`}
               style={{
-                gridRow: `${i * 3 + 1} / span 2`, // Place each button, skip a row for gap
-                animationDelay: `${i * 0.4}s`
+                gridRow: `${i * 3 + 1} / span 2`,
+                animationDelay: `${i * 0.4}s`,
               }}
+              disabled={btn.label === "vídeos"}
             >
               <Image
                 src={btn.icon}

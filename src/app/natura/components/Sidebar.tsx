@@ -45,7 +45,6 @@ const Sidebar = () => {
         return null
     }
 
-
     if (!sidebarRoutes.includes(pathname)) {
         return null
     }
@@ -54,20 +53,19 @@ const Sidebar = () => {
         label: string
         icon: string
         onClick?: () => void
-        classname: string,
+        classname: string
         rowspan: number
         isAnimating: boolean
         index: number
     }
 
-
     const SideButton = ({ label, icon, onClick, classname, rowspan, isAnimating, index }: buttonProps) => (
         <button
             onClick={onClick}
-            disabled={label === 'videos'}
+            disabled={label === "videos"}
             style={{
                 gridRow: `${rowspan} / span 1`,
-                animationDelay: isAnimating ? `${150 * index}ms` : '0ms'
+                animationDelay: isAnimating ? `${150 * index}ms` : "0ms"
             }}
             className={`col-span-1 p-2 hover:bg-[#F28B2D] disabled:opacity-50 disabled:pointer-events-none flex duration-1000 items-center justify-center transition-colors ${classname} ${selected === label ? 'bg-[#F28B2D]' : ''
                 }`}
@@ -91,8 +89,9 @@ const Sidebar = () => {
     ];
 
     const handleSideButtonClick = (href: string, label: string, submenu?: string) => {
-        router.push(href);
         setSubmenuAndSelected?.(label, submenu || "");
+        router.push(href);
+        console.log("href: ", href, "label: ", label, "submenu: ", submenu)
     };
 
     const handleSliderChange = (_: Event, newValue: number | number[]) => {
@@ -114,10 +113,9 @@ const Sidebar = () => {
         setScrollValue(100 - percentage);
     }
 
-
     return (
         <>
-            <div className='col-span-1 row-span-24 bg-[#3F4444] grid grid-cols-1 grid-rows-24'>
+            <div className="col-span-1 row-span-24 bg-[#3F4444] grid grid-cols-1 grid-rows-24">
                 <Image
                     src="/menu/menu.png"
                     alt="logo"
@@ -133,7 +131,7 @@ const Sidebar = () => {
                         key={button.label}
                         label={button.label}
                         icon={button.icon}
-                        classname={isAnimating ? `animate-fade-up duration-1000` : ''}
+                        classname={isAnimating ? `animate-fade-up duration-1000` : ""}
                         isAnimating={isAnimating}
                         index={index}
                         rowspan={button.rowStart}
@@ -153,7 +151,7 @@ const Sidebar = () => {
                 />
             </div>
             <div
-                className='row-span-24 col-span-5 grid grid-rows-24 grid-cols-5 bg-[#F28B2D]'
+                className="row-span-24 col-span-5 grid grid-rows-24 grid-cols-5 bg-[#F28B2D]"
             >
                 <Image
                     src="/menu/logoside.png"
@@ -163,7 +161,7 @@ const Sidebar = () => {
                     className="object-cover col-span-3 row-span-4 row-start-2 col-start-2 animate-fade-down duration-1000"
                 />
 
-                <span className='col-span-5 text-center row-span-1 text-white uppercase text-4xl row-start-7 animate-fade-left  '>
+                <span className="col-span-5 text-center row-span-1 text-white uppercase text-4xl row-start-7 animate-fade-left">
                     {routes[pathname.split("/").pop() as keyof typeof routes]}
                 </span>
                 {currentRoute === "Localização" && (
@@ -181,16 +179,16 @@ const Sidebar = () => {
                                 setSubmenuAndSelected?.("localizacao", "mapa-satelite");
                             }}
                             className={`row-span-1 col-span-3 ${submenu === "mapa-satelite" ? "bg-[#3F4444]" : "bg-[#F8B04C]"} flex items-center animate-fade-right animate-delay-500 justify-center row-start-11 col-start-2 hover:scale-105 transition-all duration-500`}>
-                            <span className='text-white text-2xl'>Mapa Satélite</span>
+                            <span className="text-white text-2xl">Mapa Satélite</span>
                         </button>
                     </>
                 )}
                 {currentRoute === "Imagens" && (
-                    <div className='col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 grid-rows-14 animate-fade-right'>
+                    <div className="col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 grid-rows-14 animate-fade-right">
                         <div
                             ref={scrollRef}
                             onScroll={handleScroll}
-                            className='col-span-3 row-span-14 flex flex-col overflow-y-scroll no-scrollbar gap-2'>
+                            className="col-span-3 row-span-14 flex flex-col overflow-y-scroll no-scrollbar gap-2">
                             {imagesObj.map((image, index) => {
                                 return (
                                     <button
@@ -210,12 +208,12 @@ const Sidebar = () => {
                             })}
 
                         </div>
-                        <div className='row-span-14 col-span-1 flex items-center justify-center'>
+                        <div className="row-span-14 col-span-1 flex items-center justify-center">
                             <Slider
                                 value={scrollValue}
                                 min={0}
                                 max={100}
-                                orientation='vertical'
+                                orientation="vertical"
                                 step={1}
                                 valueLabelDisplay="off"
                                 sx={{
@@ -239,7 +237,7 @@ const Sidebar = () => {
                                         backgroundColor: "#3F4444",
                                     },
                                 }}
-                                className='animate-fade-right animate-delay-400'
+                                className="animate-fade-right animate-delay-400"
                                 onChange={handleSliderChange}
                             />
                         </div>
@@ -252,7 +250,7 @@ const Sidebar = () => {
                                 key={index}
                                 style={{
                                     gridRow: `${item.rowstart} / span 1`,
-                                    animationDelay: isAnimating ? `${150 * index}ms` : '0ms'
+                                    animationDelay: isAnimating ? `${150 * index}ms` : "0ms"
                                 }}
                                 onClick={() => setSubmenuAndSelected?.("plantas", item.title)}
                                 className={`w-full text-center col-span-3 row-span-1 text-white text-xl animate-fade-right transition-colors duration-300 ${submenu === item.title ? 'bg-[#3F4444]' : 'bg-[#F8B04C] hover:bg-[#3F4444]'}`}
@@ -263,8 +261,8 @@ const Sidebar = () => {
                     </div>
                 )}
                 {currentRoute === "Ficha Técnica" && (
-                    <div className='col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 animate-fade-right'>
-                        <span className='col-span-3 text-md text-white text-justify'>
+                    <div className="col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 animate-fade-right">
+                        <span className="col-span-3 text-md text-white text-justify">
                             Prepare-se para viver em um empreendimento pensado para seu bem-estar, com a qualidade e o cuidado que só a VIC tem.
                         </span>
                     </div>
@@ -274,7 +272,7 @@ const Sidebar = () => {
                     alt="logo"
                     width={400}
                     height={350}
-                    className='col-span-3 row-span-2 row-start-23 col-start-2'
+                    className="col-span-3 row-span-2 row-start-23 col-start-2"
                 />
             </div>
         </>

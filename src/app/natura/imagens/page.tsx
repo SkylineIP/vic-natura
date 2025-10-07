@@ -4,9 +4,13 @@ import { imagesObj } from './images'
 import { useContextDefault } from '@/context/Context'
 import Image from 'next/image'
 
-const page = () => {
+const ImagensPage = () => {
     const context = useContextDefault()
     const submenu = context?.submenu;
+    const setSubmenuAndSelected = context?.setSubmenuAndSelected;
+    useEffect(() => {
+        setSubmenuAndSelected?.("imagens", "")
+    }, [])
     const currentIndex = submenu ? parseInt(submenu, 10) : 0;
 
     const [displayIndex, setDisplayIndex] = useState(currentIndex);
@@ -38,4 +42,4 @@ const page = () => {
     )
 }
 
-export default page
+export default ImagensPage

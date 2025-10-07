@@ -1,6 +1,6 @@
 {
-  "appId": "com.skylineip.template",
-  "productName": "Template Skyline",
+  "appId": "com.skylineip.granvic",
+  "productName": "Gran VIC Natura",
   "directories": {
     "output": "dist"
   },

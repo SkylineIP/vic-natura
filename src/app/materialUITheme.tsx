@@ -7,8 +7,6 @@ import { usePathname } from "next/navigation";
 import LoadingOverlay from "./components/Loading";
 import { useContextDefault } from "@/context/Context";
 import TelaCheia from "./components/TelaCheia";
-import Music from "./natura/components/Music";
-import ButtonSoundAudio from "./components/ButtonSoundAudio";
 
 //configurar tema
 //cores e fontes
@@ -28,9 +26,6 @@ const theme = createTheme({
       primary: "#080830",
       secondary: "#EBF7FD",
     },
-  },
-  typography: {
-    fontFamily: "bricolage",
   },
 });
 const OrientationWarning = () => (
@@ -60,7 +55,6 @@ const FullscreenPrompt = ({ onEnter }: { onEnter: () => void }) => (
   </div>
 );
 
-
 export default function ThemeRegistry({
   children,
 }: {
@@ -75,16 +69,19 @@ export default function ThemeRegistry({
 
   useEffect(() => {
     const checkFullscreen = () => {
-      // Use '!!' to convert the result to a boolean
-      setIsFullscreen(!!document.fullscreenElement);
+      const currentlyFullscreen = !!document.fullscreenElement;
+      setIsFullscreen(currentlyFullscreen);
     };
+    const timer = setTimeout(checkFullscreen, 500);
 
-    // Check on mount and when the fullscreen status changes
+    // Listen for changes in fullscreen status.
     document.addEventListener("fullscreenchange", checkFullscreen);
-    checkFullscreen();
 
-    return () => document.removeEventListener("fullscreenchange", checkFullscreen);
-  }, []);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("fullscreenchange", checkFullscreen);
+    };
+  }, []); // Empty dependency array ensures this runs only once on mount.
 
   const handleEnterFullscreen = () => {
     document.documentElement.requestFullscreen().catch(console.error);
