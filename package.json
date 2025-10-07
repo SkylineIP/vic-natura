@@ -1,6 +1,6 @@
 {
   "name": "gran-vic-natura",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "main": "main/main.mjs",
   "author": {
@@ -14,7 +14,23 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-electron": "dotenv -e .env -- electron-builder --config electron-builder.json --publish always"
+    "build-electron": "dotenv -e .env -- electron-builder --publish always"
+  },
+  "build": {
+    "appId": "com.skylineip.granvic",
+    "productName": "Gran VIC Natura",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main/**/*",
+      "out/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "/public/icon.ico"
+    }
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -27,7 +43,6 @@
     "electron-serve": "^3.0.0",
     "electron-updater": "^6.6.2",
     "framer-motion": "^12.23.12",
-    "next": ">=15.4.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-signature-canvas": "^1.1.0-alpha.2",
