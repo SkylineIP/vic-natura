@@ -1,3 +1,4 @@
+'use client'
 import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -43,7 +44,7 @@ const Sidebar = () => {
 
     if (!currentRoute) {
         return null
-    }
+    }   
 
     if (!sidebarRoutes.includes(pathname)) {
         return null
@@ -59,6 +60,8 @@ const Sidebar = () => {
         index: number
     }
 
+    const is4k =  window.innerWidth >= 3840;
+
     const SideButton = ({ label, icon, onClick, classname, rowspan, isAnimating, index }: buttonProps) => (
         <button
             onClick={onClick}
@@ -73,8 +76,8 @@ const Sidebar = () => {
             <Image
                 src={icon}
                 alt={label}
-                width={40}
-                height={40}
+                width={is4k ? 80 : 40}
+                height={is4k ? 80 : 40}
                 className="object-contain"
             />
         </button>
@@ -91,7 +94,6 @@ const Sidebar = () => {
     const handleSideButtonClick = (href: string, label: string, submenu?: string) => {
         setSubmenuAndSelected?.(label, submenu || "");
         router.push(href);
-        console.log("href: ", href, "label: ", label, "submenu: ", submenu)
     };
 
     const handleSliderChange = (_: Event, newValue: number | number[]) => {
@@ -142,8 +144,8 @@ const Sidebar = () => {
                 <Image
                     src="/menu/b-voltar.png"
                     alt="logo"
-                    width={80}
-                    height={40}
+                    width={is4k ? 80 : 40}
+                    height={is4k ? 80 : 40}
                     className="row-start-24  cursor-pointer"
                     onClick={() => {
                         router.push("/natura")
@@ -151,7 +153,7 @@ const Sidebar = () => {
                 />
             </div>
             <div
-                className="row-span-24 col-span-5 grid grid-rows-24 grid-cols-5 bg-[#F28B2D]"
+                className="row-span-24 col-span-5 grid grid-rows-24  grid-cols-5 bg-[#F28B2D]"
             >
                 <Image
                     src="/menu/logoside.png"
@@ -161,7 +163,7 @@ const Sidebar = () => {
                     className="object-cover col-span-3 row-span-4 row-start-2 col-start-2 animate-fade-down duration-1000"
                 />
 
-                <span className="col-span-5 text-center row-span-1 text-white uppercase text-4xl row-start-7 animate-fade-left">
+                <span className="col-span-5 text-center row-span-1 text-white uppercase text-4xl fourk:text-7xl row-start-7 animate-fade-left">
                     {routes[pathname.split("/").pop() as keyof typeof routes]}
                 </span>
                 {currentRoute === "Localização" && (
@@ -169,17 +171,16 @@ const Sidebar = () => {
                         <button
                             onClick={() => {
                                 setSubmenuAndSelected?.("localizacao", "mapa2d");
-                                console.log(submenu, selected)
                             }}
                             className={`row-span-1 col-span-3 ${submenu === "mapa2d" ? "bg-[#3F4444]" : "bg-[#F8B04C]"} flex animate-fade-right animate-delay-150 items-center justify-center row-start-9 col-start-2 hover:scale-105 transition-all duration-500`}>
-                            <span className={`text-white text-2xl`}>Mapa 2D</span>
+                            <span className={`text-white text-2xl fourk:text-5xl`}>Mapa 2D</span>
                         </button>
                         <button
                             onClick={() => {
                                 setSubmenuAndSelected?.("localizacao", "mapa-satelite");
                             }}
                             className={`row-span-1 col-span-3 ${submenu === "mapa-satelite" ? "bg-[#3F4444]" : "bg-[#F8B04C]"} flex items-center animate-fade-right animate-delay-500 justify-center row-start-11 col-start-2 hover:scale-105 transition-all duration-500`}>
-                            <span className="text-white text-2xl">Mapa Satélite</span>
+                            <span className="text-white text-2xl fourk:text-5xl">Mapa Satélite</span>
                         </button>
                     </>
                 )}
@@ -253,7 +254,7 @@ const Sidebar = () => {
                                     animationDelay: isAnimating ? `${150 * index}ms` : "0ms"
                                 }}
                                 onClick={() => setSubmenuAndSelected?.("plantas", item.title)}
-                                className={`w-full text-center col-span-3 row-span-1 text-white text-xl animate-fade-right transition-colors duration-300 ${submenu === item.title ? 'bg-[#3F4444]' : 'bg-[#F8B04C] hover:bg-[#3F4444]'}`}
+                                className={`w-full text-center col-span-3 row-span-1 fourk:text-5xl text-white text-xl animate-fade-right transition-colors duration-300 ${submenu === item.title ? 'bg-[#3F4444]' : 'bg-[#F8B04C] hover:bg-[#3F4444]'}`}
                             >
                                 {item.title}
                             </button>
@@ -262,7 +263,7 @@ const Sidebar = () => {
                 )}
                 {currentRoute === "Ficha Técnica" && (
                     <div className="col-span-4 row-span-14 col-start-2 row-start-9 grid grid-cols-4 animate-fade-right">
-                        <span className="col-span-3 text-md text-white text-justify">
+                        <span className="col-span-3 text-md fourk:text-3xl text-white text-justify">
                             Prepare-se para viver em um empreendimento pensado para seu bem-estar, com a qualidade e o cuidado que só a VIC tem.
                         </span>
                     </div>

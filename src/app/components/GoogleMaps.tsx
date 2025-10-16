@@ -38,7 +38,7 @@ const MapContent = () => {
         // você pode substituir por outras coordenadas
         defaultZoom={18}
         // nível de zoom inicial do mapa
-        disableDefaultUI={false}
+        disableDefaultUI={true}
         // desativa a interface padrão do Google Maps
         gestureHandling={"greedy"}
         // controla o comportamento de gestos do mapa

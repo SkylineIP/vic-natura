@@ -44,6 +44,9 @@ const MenuPage: React.FC = () => {
     context?.setSubmenuAndSelected?.(label, submenu || "")
   }
 
+  const is4k = window.innerWidth >= 3840;
+
+
   return (
     <>
       <div className="row-span-24 col-span-1 bg-[#3F4444] grid grid-cols-1 grid-rows-24">
@@ -68,8 +71,8 @@ const MenuPage: React.FC = () => {
             <Image
               src={btn.icon}
               alt={btn.label}
-              width={40}
-              height={40}
+              width={is4k ? 80 : 40}
+              height={is4k  ? 80 : 40}
               className="object-contain"
             />
           </button>
@@ -95,7 +98,7 @@ const MenuPage: React.FC = () => {
               onClick={() => {
                 handleButtonClick(btn)
               }}
-              className={`bg-[#F68B07] text-white uppercase flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold tracking-widest text-lg w-full
+              className={`bg-[#F68B07] text-white uppercase flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold tracking-widest text-lg fourk:text-5xl w-full
   ${btn.label === "vídeos" ? "opacity-30 grayscale cursor-not-allowed pointer-events-none" : "hover:scale-105"}`}
               style={{
                 gridRow: `${i * 3 + 1} / span 2`,
