@@ -6,7 +6,7 @@ import useOrientation from "./components/verificaOrientacao";
 import { usePathname } from "next/navigation";
 import LoadingOverlay from "./components/Loading";
 import { useContextDefault } from "@/context/Context";
-import TelaCheia from "./components/TelaCheia";
+// import TelaCheia from "./components/TelaCheia";
 
 //configurar tema
 //cores e fontes
@@ -64,7 +64,7 @@ export default function ThemeRegistry({
   const pathname = usePathname();
   const isLandscape = useOrientation();
   const context = useContextDefault();
-  const abrirImagensTelaCheia = context?.abrirImagensTelaCheia;
+  // const abrirImagensTelaCheia = context?.abrirImagensTelaCheia;
   const [isFullscreen, setIsFullscreen] = useState(true);
 
   useEffect(() => {
