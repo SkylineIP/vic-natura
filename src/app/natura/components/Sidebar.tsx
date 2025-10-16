@@ -60,7 +60,7 @@ const Sidebar = () => {
         index: number
     }
 
-    const is4k =  window.innerWidth >= 3840;
+    const is4k = typeof window !== 'undefined' ? window.innerWidth >= 3840 : false;
 
     const SideButton = ({ label, icon, onClick, classname, rowspan, isAnimating, index }: buttonProps) => (
         <button

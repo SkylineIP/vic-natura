@@ -7,6 +7,9 @@ const useOrientation = () => {
   const [isLandscape, setIsLandscape] = useState<boolean>(true);
 
   useEffect(() => {
+    // Check if we're in the browser before using window
+    if (typeof window === 'undefined') return;
+
     // Função que atualiza o estado baseado na media query
     const updateOrientation = (e?: MediaQueryListEvent) => {
       // Se e estiver definido, usa o event; senão, consulta a condição atual
