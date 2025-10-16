@@ -99,7 +99,7 @@ export default function ThemeRegistry({
       {loading && <LoadingOverlay />}
       {!isFullscreen && <FullscreenPrompt onEnter={handleEnterFullscreen} />}
       {isLandscape && isFullscreen ? children : !isLandscape ? <OrientationWarning /> : null}
-      {abrirImagensTelaCheia?.open && <TelaCheia />}
+      {/* {abrirImagensTelaCheia?.open && <TelaCheia />} */}
       {/* <ButtonSoundAudio /> */}
       {/* <Music /> */}
     </ThemeProvider>
