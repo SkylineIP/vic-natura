@@ -32,8 +32,10 @@ const MapContent = () => {
     <div className="relative w-full h-full">
       <Map
       // -22.782594874116686, -47.30683929180017
+
+        //-22.782593982374905, -47.305951817858364
         style={{ width: "100%", height: "100vh" }}
-        defaultCenter={{ lat: -22.782594874116686, lng: -47.30683929180017 }}
+        defaultCenter={{ lat: -22.782593982374905, lng: -47.305951817858364 }}
         // coordenadas do centro do mapa
         // você pode substituir por outras coordenadas
         defaultZoom={18}
@@ -49,7 +51,7 @@ const MapContent = () => {
           <Marker
             // marcador no mapa
             icon={markerIcon}
-            position={{ lat: -22.782594874116686, lng: -47.30683929180017 }}
+            position={{ lat: -22.782593982374905, lng: -47.305951817858364 }}
           />
         )}
       </Map>
