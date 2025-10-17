@@ -60,7 +60,6 @@ const Sidebar = () => {
     }
 
     const is4k = typeof window !== 'undefined' ? window.innerWidth >= 3840 : false;
-
     
     const buttonsData = [
         { label: "localizacao", icon: "/menu/location.svg", href: "/natura/localizacao", rowStart: 5, submenu: "mapa2d" },
