@@ -24,7 +24,7 @@ const MapContent = () => {
     if (!mapsLibrary) return null;
     return {
       url: "/menu/pin.svg",
-      scaledSize: new google.maps.Size(190, 190),
+      scaledSize: new google.maps.Size(250, 250),
     };
   }, [mapsLibrary]);
 
