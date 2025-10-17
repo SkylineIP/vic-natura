@@ -14,7 +14,7 @@ const MenuPage: React.FC = () => {
     { label: "imagens", icon: "/menu/images.svg", href: "/natura/imagens" },
     { label: "plantas", icon: "/menu/plants.svg", href: "/natura/plantas", submenu: "Implantação" },
     { label: "ficha-tecnica", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica" },
-    { label: "vídeos", icon: "/menu/videos.svg", href: "/natura/videos" },
+    // { label: "vídeos", icon: "/menu/videos.svg", href: "/natura/videos" },
   ]
 
   enum labelButtons {
@@ -22,16 +22,16 @@ const MenuPage: React.FC = () => {
     "imagens" = "Imagens",
     "plantas" = "Plantas",
     "ficha-tecnica" = "Ficha Técnica",
-    "vídeos" = "Vídeos",
+    // "vídeos" = "Vídeos",
   }
 
-  const sideButtons = [
-    { label: "lancamento", icon: "/menu/b-lancamento.png" },
-    { label: "obras", icon: "/menu/b-obras-iniciadas.png" },
-    { label: "pronto", icon: "/menu/b-pronto-morar.png" },
-    { label: "breve", icon: "/menu/b-breve-lancamento.png" },
-    { label: "vic", icon: "/menu/b-vic.png" }
-  ]
+  // const sideButtons = [
+  //   { label: "lancamento", icon: "/menu/b-lancamento.png" },
+  //   { label: "obras", icon: "/menu/b-obras-iniciadas.png" },
+  //   { label: "pronto", icon: "/menu/b-pronto-morar.png" },
+  //   { label: "breve", icon: "/menu/b-breve-lancamento.png" },
+  //   { label: "vic", icon: "/menu/b-vic.png" }
+  // ]
 
   interface buttonHandlerProps {
     href: string,
@@ -44,7 +44,7 @@ const MenuPage: React.FC = () => {
     context?.setSubmenuAndSelected?.(label, submenu || "")
   }
 
-  const is4k = typeof window !== 'undefined' ? window.innerWidth >= 3840 : false;
+  // const is4k = typeof window !== 'undefined' ? window.innerWidth >= 3840 : false;
 
   return (
     <>
@@ -58,7 +58,7 @@ const MenuPage: React.FC = () => {
             className="object-cover"
           />
         </button>
-        {sideButtons.map((btn, i) => (
+        {/* {sideButtons.map((btn, i) => (
           <button
             key={btn.label}
             className="col-span-1 p-2 hover:bg-[#F28B2D] flex animate-fade-up duration-1000 items-center justify-center h-16" // Added flex and fixed height
@@ -75,7 +75,7 @@ const MenuPage: React.FC = () => {
               className="object-contain"
             />
           </button>
-        ))}
+        ))} */}
       </div>
       <div className="row-span-24 col-span-23 bg-menu grid grid-cols-23 grid-rows-24 bg-cover">
         <Image
