@@ -11,7 +11,6 @@ const Sidebar = () => {
     const pathname = usePathname()
     const router = useRouter()
     const context = useContextDefault()
-    const selected = context?.selected
     const submenu = context?.submenu
     const setSubmenuAndSelected = context?.setSubmenuAndSelected
     const scrollRef = useRef<HTMLDivElement>(null);
