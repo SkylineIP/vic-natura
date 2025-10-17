@@ -6,7 +6,7 @@ const VideoPage = () => {
         <div className="col-span-18 row-span-24">
             <Videos
                 thumb="/video/thumb.png"
-                videoSrc="/video/video.mp4"
+                videoSrc="https://skylineip.s3.sa-east-1.amazonaws.com/Programa%C3%A7%C3%A3o/vic-engenharia/vic-natura/VIDEO+TOUR+NATURA_+1.mp4"
             />
         </div>
     )
