@@ -62,16 +62,22 @@ const Sidebar = () => {
 
     const is4k = typeof window !== 'undefined' ? window.innerWidth >= 3840 : false;
 
-    const SideButton = ({ label, icon, onClick, classname, rowspan, isAnimating, index }: buttonProps) => (
+    
+    const buttonsData = [
+        { label: "localizacao", icon: "/menu/location.svg", href: "/natura/localizacao", rowStart: 5, submenu: "mapa2d" },
+        { label: "imagens", icon: "/menu/images.svg", href: "/natura/imagens", rowStart: 7, submenu: "" },
+        { label: "plantas", icon: "/menu/plants.svg", href: "/natura/plantas", rowStart: 9, submenu: "Implantação" },
+        { label: "ficha-tecnica", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica", rowStart: 11, submenu: "" },
+        { label: "videos", icon: "/menu/videos.svg", href: "/natura/videos", rowStart: 13, submenu: "" },
+    ];
+    const SideButton = ({ label, icon, onClick, rowspan, isAnimating, index }: buttonProps) => (
         <button
             onClick={onClick}
-            disabled={label === "videos"}
             style={{
                 gridRow: `${rowspan} / span 1`,
                 animationDelay: isAnimating ? `${150 * index}ms` : "0ms"
             }}
-            className={`col-span-1 p-2 hover:bg-[#F28B2D] disabled:opacity-50 disabled:pointer-events-none flex duration-1000 items-center justify-center transition-colors ${classname} ${selected === label ? 'bg-[#F28B2D]' : ''
-                }`}
+            className={`col-span-1 p-2 hover:bg-[#F28B2D] flex duration-1000 items-center justify-center transition-colors ${pathname.includes(label) ? 'bg-[#F28B2D]' : 'bg-transparent hover:bg-[#F28B2D]'}`}
         >
             <Image
                 src={icon}
@@ -82,14 +88,6 @@ const Sidebar = () => {
             />
         </button>
     )
-
-    const buttonsData = [
-        { label: "localizacao", icon: "/menu/location.svg", href: "/natura/localizacao", rowStart: 5, submenu: "mapa2d" },
-        { label: "imagens", icon: "/menu/images.svg", href: "/natura/imagens", rowStart: 7, submenu: "" },
-        { label: "plantas", icon: "/menu/plants.svg", href: "/natura/plantas", rowStart: 9, submenu: "Implantação" },
-        { label: "ficha-tecnica", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica", rowStart: 11, submenu: "" },
-        { label: "videos", icon: "/menu/videos.svg", href: "/natura/videos", rowStart: 13, submenu: "" },
-    ];
 
     const handleSideButtonClick = (href: string, label: string, submenu?: string) => {
         setSubmenuAndSelected?.(label, submenu || "");

@@ -14,7 +14,7 @@ const MenuPage: React.FC = () => {
     { label: "imagens", icon: "/menu/images.svg", href: "/natura/imagens" },
     { label: "plantas", icon: "/menu/plants.svg", href: "/natura/plantas", submenu: "Implantação" },
     { label: "ficha-tecnica", icon: "/menu/tech.svg", href: "/natura/ficha-tecnica" },
-    // { label: "vídeos", icon: "/menu/videos.svg", href: "/natura/videos" },
+    { label: "vídeos", icon: "/menu/videos.svg", href: "/natura/videos" },
   ]
 
   enum labelButtons {
@@ -22,7 +22,7 @@ const MenuPage: React.FC = () => {
     "imagens" = "Imagens",
     "plantas" = "Plantas",
     "ficha-tecnica" = "Ficha Técnica",
-    // "vídeos" = "Vídeos",
+    "vídeos" = "Vídeos",
   }
 
   // const sideButtons = [
@@ -97,13 +97,11 @@ const MenuPage: React.FC = () => {
               onClick={() => {
                 handleButtonClick(btn)
               }}
-              className={`bg-[#F68B07] text-white uppercase flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold tracking-widest text-lg fourk:text-5xl w-full
-  ${btn.label === "vídeos" ? "opacity-30 grayscale cursor-not-allowed pointer-events-none" : "hover:scale-105"}`}
+              className={`bg-[#F68B07] text-white uppercase flex items-center col-span-5 px-4 animate-fade-right duration-1000 py-4 font-bold tracking-widest text-lg fourk:text-5xl w-full`}
               style={{
                 gridRow: `${i * 3 + 1} / span 2`,
                 animationDelay: `${i * 0.4}s`,
               }}
-              disabled={btn.label === "vídeos"}
             >
               <Image
                 src={btn.icon}
